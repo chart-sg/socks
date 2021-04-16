@@ -32,5 +32,3 @@ cd ~/socks_ws/src/socks/include/websocketpp/tutorials/utility_client
 ```
 cd ~/socks_ws/src/socks/include/websocketpp/tutorials/utility_client/utility_server
 ```                               
-~                                                                                                                
-~                                                                           
