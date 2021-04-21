@@ -25,11 +25,12 @@ message("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 add_executable(${CMAKE_PROJECT_NAME}_client src/client.cpp)
 add_executable(${CMAKE_PROJECT_NAME}_server src/server.cpp)
 
-target_include_directories(${CMAKE_PROJECT_NAME}_client PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/websocketpp)
-target_include_directories(${CMAKE_PROJECT_NAME}_server 
-  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/websocketpp
-  PUBLIC /usr/include/asio
-  )
+# This part shouldnt be neccessary if apt install asio worked properly
+# target_include_directories(${CMAKE_PROJECT_NAME}_client PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/websocketpp)
+# target_include_directories(${CMAKE_PROJECT_NAME}_server 
+#   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/websocketpp
+#   PUBLIC /usr/include/asio
+#   )
 
 target_link_libraries(${CMAKE_PROJECT_NAME}_client PUBLIC Threads::Threads) #Asio::Asio)
 target_link_libraries(${CMAKE_PROJECT_NAME}_server PUBLIC Threads::Threads) #Asio::Asio)
