@@ -16,7 +16,7 @@ endif()
 
 # find dependencies
 find_package(Threads REQUIRED)
-# find_package(asio REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 message("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 message(INFO ${CMAKE_CURRENT_SOURCE_DIR})
@@ -32,8 +32,18 @@ add_executable(${CMAKE_PROJECT_NAME}_server src/server.cpp)
 #   PUBLIC /usr/include/asio
 #   )
 
-target_link_libraries(${CMAKE_PROJECT_NAME}_client PUBLIC Threads::Threads) #Asio::Asio)
-target_link_libraries(${CMAKE_PROJECT_NAME}_server PUBLIC Threads::Threads) #Asio::Asio)
+target_link_libraries(${CMAKE_PROJECT_NAME}_client PUBLIC 
+  Threads::Threads
+  crypto
+  ssl
+  )
+  # OpenSSL::OpenSSL) 
+target_link_libraries(${CMAKE_PROJECT_NAME}_server PUBLIC 
+  Threads::Threads
+  crypto
+  ssl
+  )
+  # OpenSSL::OpenSSL) 
 
 install(TARGETS
   ${CMAKE_PROJECT_NAME}_client
